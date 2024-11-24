@@ -1,20 +1,17 @@
 .calculator-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    max-width: 1200px; /* Adjust the max-width as needed */
     min-height: 100vh;
     padding: 2rem;
     margin: 0 auto; /* Center the container horizontally */
     box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+
 }
 
 /* Ensure all text is white */
 .calculator-container * {
+    margin: 10px;
     color: white;
 }
-
 /* Existing styles */
 @keyframes blob {
     0% { transform: translate(0px, 0px) scale(1); }
@@ -65,7 +62,7 @@
 }
 
 .quantum-button {
-    width: 100%;
+    width: 80%;
     padding: 1rem;
     background: linear-gradient(45deg, rgba(0, 255, 242, 0.1), rgba(0, 38, 255, 0.1));
     border: 1px solid rgba(0, 255, 242, 0.3);
@@ -73,10 +70,12 @@
     color: white;
     font-weight: 500;
     transition: all 0.3s ease;
+    align-content: center;
     position: relative;
     overflow: hidden;
+    display: block; /* Add this line */
+    margin: 0 auto; /* Add this line */
 }
-
 .quantum-button:hover {
     transform: translateY(-2px);
     border-color: rgba(0, 255, 242, 0.6);
@@ -220,3 +219,4 @@
     background-color: rgba(0, 255, 242, 0.2);
     color: white;
 }
+
