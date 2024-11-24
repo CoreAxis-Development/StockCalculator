@@ -26,7 +26,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
     const [investmentDate, setInvestmentDate] = useState<Date | null>(
         searchParams.get('date') ? new Date(searchParams.get('date')!) : null
     );
-    const [projectionYears, setProjectionYears] = useState<string>('5');
+    const [projectionYears, setProjectionYears] = useState<string>('0');
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const [result, setResult] = useState<CalculationResult | null>(null);
@@ -34,14 +34,14 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
     const maxDate = new Date();
 
     const calculateReturns = useCallback(async () => {
-        if (!initialAmount || !investmentDate || !projectionYears) {
+        if (!initialAmount || !investmentDate || projectionYears === null) {
             setError('Please enter amount, date, and projection period');
             return;
         }
 
         const amount = parseFloat(initialAmount);
         const years = parseFloat(projectionYears);
-        if (isNaN(amount) || amount <= 0 || isNaN(years) || years <= 0) {
+        if (isNaN(amount) || amount <= 0 || isNaN(years) || years < 0) {
             setError('Please enter valid amount and projection period');
             return;
         }
@@ -80,7 +80,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
     }, [initialAmount, investmentDate, projectionYears, setSearchParams]);
 
     useEffect(() => {
-        if (initialAmount && investmentDate && projectionYears) {
+        if (initialAmount && investmentDate && projectionYears !== null) {
             calculateReturns();
         }
     }, []);
@@ -137,6 +137,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
                                         onChange={(e) => setProjectionYears(e.target.value)}
                                         className="quantum-input"
                                     >
+                                        <option value="0">Current Date</option>
                                         {Array.from(Array(30).keys()).map(year => (
                                             <option key={year + 1} value={year + 1}>
                                                 {year + 1}
