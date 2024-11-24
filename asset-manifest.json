@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/StockCalculator/static/css/main.0a4bef15.css",
-    "main.js": "/StockCalculator/static/js/main.07938fac.js",
+    "main.css": "/StockCalculator/static/css/main.956f1b69.css",
+    "main.js": "/StockCalculator/static/js/main.e611c75f.js",
     "static/js/453.39f32deb.chunk.js": "/StockCalculator/static/js/453.39f32deb.chunk.js",
     "static/media/background.svg": "/StockCalculator/static/media/background.a7b026d2647927e28cc0bc188386335c.svg",
     "index.html": "/StockCalculator/index.html",
-    "main.0a4bef15.css.map": "/StockCalculator/static/css/main.0a4bef15.css.map",
-    "main.07938fac.js.map": "/StockCalculator/static/js/main.07938fac.js.map",
+    "main.956f1b69.css.map": "/StockCalculator/static/css/main.956f1b69.css.map",
+    "main.e611c75f.js.map": "/StockCalculator/static/js/main.e611c75f.js.map",
     "453.39f32deb.chunk.js.map": "/StockCalculator/static/js/453.39f32deb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a4bef15.css",
-    "static/js/main.07938fac.js"
+    "static/css/main.956f1b69.css",
+    "static/js/main.e611c75f.js"
   ]
 }
