@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/stock-calculator/static/css/main.0a4bef15.css",
+    "main.js": "/stock-calculator/static/js/main.5f6986ed.js",
+    "static/js/453.39f32deb.chunk.js": "/stock-calculator/static/js/453.39f32deb.chunk.js",
+    "static/media/background.svg": "/stock-calculator/static/media/background.a7b026d2647927e28cc0bc188386335c.svg",
+    "index.html": "/stock-calculator/index.html",
+    "main.0a4bef15.css.map": "/stock-calculator/static/css/main.0a4bef15.css.map",
+    "main.5f6986ed.js.map": "/stock-calculator/static/js/main.5f6986ed.js.map",
+    "453.39f32deb.chunk.js.map": "/stock-calculator/static/js/453.39f32deb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a4bef15.css",
+    "static/js/main.5f6986ed.js"
+  ]
+}
