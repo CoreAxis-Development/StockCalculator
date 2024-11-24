@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import {
     LineChart,
     Line,
@@ -21,15 +23,15 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
     const [initialAmount, setInitialAmount] = useState<string>(
         searchParams.get('amount') || ''
     );
-    const [investmentDate, setInvestmentDate] = useState<string>(
-        searchParams.get('date') || ''
+    const [investmentDate, setInvestmentDate] = useState<Date | null>(
+        searchParams.get('date') ? new Date(searchParams.get('date')!) : null
     );
     const [projectionYears, setProjectionYears] = useState<string>('5');
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const [result, setResult] = useState<CalculationResult | null>(null);
 
-    const maxDate = new Date().toISOString().split('T')[0];
+    const maxDate = new Date();
 
     const calculateReturns = useCallback(async () => {
         if (!initialAmount || !investmentDate || !projectionYears) {
@@ -44,8 +46,8 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
             return;
         }
 
-        const startDate = new Date(investmentDate);
-        if (startDate > new Date()) {
+        const startDate = investmentDate;
+        if (startDate! > new Date()) {
             setError('Investment date cannot be in the future');
             return;
         }
@@ -55,7 +57,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
 
         try {
             const result = await fetchInvestmentData({
-                startDate: investmentDate,
+                startDate: startDate!.toISOString().split('T')[0],
                 amount,
                 projectionYears: years
             });
@@ -63,7 +65,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
             setResult(result);
             setSearchParams({
                 amount: amount.toString(),
-                date: investmentDate,
+                date: startDate!.toISOString().split('T')[0],
                 projectionYears: years.toString()
             });
         } catch (err) {
@@ -97,7 +99,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
                     </div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto p-6"> {/* Updated max-w-6xl to max-w-7xl */}
+                <div className="relative z-10 max-w-7xl mx-auto p-6">
                     <div className="backdrop-blur-xl bg-black/20 rounded-3xl border border-white/10 shadow-2xl">
                         <div className="p-8 text-center">
                             <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
@@ -120,23 +122,27 @@ export const Calculator: React.FC<CalculatorProps> = ({ className = '' }) => {
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-cyan-300">Investment Date</label>
-                                    <input
-                                        type="date"
-                                        value={investmentDate}
-                                        onChange={(e) => setInvestmentDate(e.target.value)}
-                                        max={maxDate}
+                                    <DatePicker
+                                        selected={investmentDate}
+                                        onChange={(date) => setInvestmentDate(date)}
+                                        maxDate={maxDate}
                                         className="quantum-input"
+                                        placeholderText="Select date"
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-cyan-300">Projection Period (Years)</label>
-                                    <input
-                                        type="number"
+                                    <select
                                         value={projectionYears}
                                         onChange={(e) => setProjectionYears(e.target.value)}
                                         className="quantum-input"
-                                        placeholder="Enter years"
-                                    />
+                                    >
+                                        {Array.from(Array(30).keys()).map(year => (
+                                            <option key={year + 1} value={year + 1}>
+                                                {year + 1}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
 

@@ -1,14 +1,13 @@
-/* Center the calculator container */
-/* Center the calculator container and make it wider */
 .calculator-container {
     display: flex;
-    position: absolute;
     justify-content: center;
     align-items: center;
-    min-width: 100%;
-    min-height: 80vh;
+    width: 100%;
+    max-width: 1200px; /* Adjust the max-width as needed */
+    min-height: 100vh;
     padding: 2rem;
     margin: 0 auto; /* Center the container horizontally */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 /* Ensure all text is white */
@@ -54,6 +53,7 @@
     border: 1px solid rgba(0, 255, 242, 0.3);
     border-radius: 1rem;
     color: white;
+    margin: 10px;
     transition: all 0.3s ease;
 }
 
@@ -184,4 +184,39 @@
 
 .quantum-chart-container {
     background: rgba(0, 0, 0, 0.4);
+}
+
+/* DatePicker.css */
+.react-datepicker {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 255, 242, 0.3);
+    color: white;
+    border-radius: 1rem;
+}
+
+.react-datepicker__header {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(0, 255, 242, 0.3);
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+    color: white;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background-color: rgba(0, 255, 242, 0.3);
+    color: black;
+}
+
+.react-datepicker__day--today {
+    border-color: rgba(0, 255, 242, 0.6);
+}
+
+.react-datepicker__day:hover {
+    background-color: rgba(0, 255, 242, 0.2);
+    color: white;
 }
