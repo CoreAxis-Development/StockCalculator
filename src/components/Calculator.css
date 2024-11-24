@@ -1,0 +1,187 @@
+/* Center the calculator container */
+/* Center the calculator container and make it wider */
+.calculator-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 80vh;
+    padding: 2rem;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Ensure all text is white */
+.calculator-container * {
+    color: white;
+}
+
+/* Existing styles */
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 242, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 242, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 242, 0); }
+}
+
+@keyframes glow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.quantum-input {
+    width: 90%;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 255, 242, 0.3);
+    border-radius: 1rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.quantum-input:focus {
+    outline: none;
+    border-color: rgba(0, 255, 242, 0.6);
+    box-shadow: 0 0 0 2px rgba(0, 255, 242, 0.2);
+    animation: pulse 2s infinite;
+}
+
+.quantum-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, rgba(0, 255, 242, 0.1), rgba(0, 38, 255, 0.1));
+    border: 1px solid rgba(0, 255, 242, 0.3);
+    border-radius: 1rem;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quantum-button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 242, 0.6);
+    box-shadow: 0 0 20px rgba(0, 255, 242, 0.2);
+}
+
+.quantum-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.quantum-button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 255, 242, 0.2),
+            transparent
+    );
+    transform: translateX(-100%);
+}
+
+.quantum-button:hover .quantum-button-glow {
+    animation: glow 1.5s infinite;
+}
+
+.quantum-metric-card {
+    backdrop-filter: blur(8px);
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.quantum-metric-card:hover {
+    border-color: rgba(0, 255, 242, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 255, 242, 0.1);
+}
+
+.quantum-chart-container {
+    height: 24rem;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.quantum-chart-container:hover {
+    border-color: rgba(0, 255, 242, 0.3);
+    box-shadow: 0 0 30px rgba(0, 255, 242, 0.1);
+}
+
+/* Add to your existing Calculator.css */
+.min-h-screen {
+    background-image: url('data:image/svg+xml;utf8,...'); /* Replace ... with the SVG content */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Enhance the backdrop blur for better contrast with the new background */
+.backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Add a subtle gradient overlay */
+.min-h-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.3)
+    );
+    pointer-events: none;
+}
+
+/* Enhance the glowing effects */
+.quantum-input:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 242, 0.3);
+}
+
+.quantum-button:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 242, 0.3);
+}
+
+.quantum-metric-card {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.quantum-chart-container {
+    background: rgba(0, 0, 0, 0.4);
+}

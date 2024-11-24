@@ -1,0 +1,31 @@
+/* Add your custom styles here */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: linear-gradient(to right, #4b0082, #8a2be2);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.card-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-content {
+    margin-top: 20px;
+}
